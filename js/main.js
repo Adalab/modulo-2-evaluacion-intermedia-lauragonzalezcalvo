@@ -16,7 +16,7 @@ function getRandomNumber(max) {
 //funcion para generar los numeros asociados a la raza
 
 function racesComputer () {
-    const randomNumber = 1;
+    const randomNumber = 5;
     // getRandomNumber(5);
     let raceComp = "";
     if (randomNumber === 1 || randomNumber === 2 || randomNumber === 3 ){
@@ -44,27 +44,46 @@ return raceComp
 
 //nombrar razas del jugador con sus correspondientes fuerzas para luego compararlas
 function playerForces(){
-    const optionsValue = options.value;
+    const racesValue = races.value;
     let forces = "";
-    if (optionsValue==="Pelosos con fuerza")
+    if (racesValue==="Pelosos con fuerza")
     forces = 1;
-    else if (optionsValue==="Sureños buenos con fuerza")
+    else if (racesValue==="Sureños buenos con fuerza")
     forces = 2;
-    else if (optionsValue==="Enanos con fuerza")
+    else if (racesValue==="Enanos con fuerza")
     forces = 3;
-    else if (optionsValue==="Númenóreanos con fuerza")
+    else if (racesValue==="Númenóreanos con fuerza")
     forces = 5;
-    else if (optionsValue==="Elfos con fuerza")
+    else if (racesValue==="Elfos con fuerza")
     forces = 5;
+    
+    // console.log (forces);
+    return forces
 }
 
 //comparar razas para hacer ell resultado
+
+function compareForces (){
+ //llamamos a la funciones para comparar los resultados de cada una
+    let player = playerForces();
+    let computer =  racesComputer () 
+    // console.log (computer);
+    if (player === 5 && computer === 5){
+        result.innerHTML = "Empate";
+    }
+
+
+
+}
+
 
 //funcion manejadora
 
 function handleClick(e) {
     e.preventDefault();
     racesComputer ();
+    playerForces();
+    compareForces ();
 }
 
 btnPlay.addEventListener("click", handleClick);
