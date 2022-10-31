@@ -16,7 +16,7 @@ function getRandomNumber(max) {
 //funcion para generar los numeros asociados a la raza
 
 function racesComputer () {
-    const randomNumber = 5;
+    const randomNumber = 2;
     // getRandomNumber(5);
     let raceComp = "";
     if (randomNumber === 1 || randomNumber === 2 || randomNumber === 3 ){
@@ -70,6 +70,12 @@ function compareForces (){
     // console.log (computer);
     if (player === 5 && computer === 5){
         result.innerHTML = "Empate";
+    }
+    if (player > computer){
+        result.innerHTML = "Ha ganado el Ejército del Bien! Enhorabuena";
+    }
+    if (player < computer){
+        result.innerHTML = "Ha ganado el Ejército del Mal! Vuelve a Intentarlo.";
     }
 
 
