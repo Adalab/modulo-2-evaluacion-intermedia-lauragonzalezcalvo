@@ -8,8 +8,26 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
 </head>
-<body>
-    <h1 class="hello">Hola mundo</h1>
+<body class="page">
+    <header>
+        <h1 class="game__title">Los anillos de poder</h1>
+    </header>
+    <main class="main">
+        <form>
+            <select class="js-races races">
+                <option value="Elige">Seleccione la raza con la que vas a jugar</option>
+                <option value="Pelosos con fuerza" >Pelosos con fuerza</option>
+                <option value="Sureños buenos con fuerza">Sureños buenos con fuerza</option>
+                <option value="Tijera" class="js-scissors">Enanos con fuerza</option>
+                <option value="Númenóreanos con fuerza">Númenóreanos con fuerza</option>
+                <option value="Elfos con fuerza" >Elfos con fuerza</option>
+            </select>
+            <button class="js-button button">Batalla</button>
+        </form>
+        <section>
+            <h2 class="js-result result">Comienza la batalla</h2>
+        </section>
+    </main>
 
 
     <script src="./js/main.js"></script>

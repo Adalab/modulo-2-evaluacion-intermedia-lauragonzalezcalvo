@@ -1,3 +1,23 @@
-.hello{
-    background-color: aqua;
+.page{
+    background-color: rgba(211, 39, 39, 0.406);
+}
+
+.game__title{
+    
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
 }
