@@ -16,8 +16,7 @@ function getRandomNumber(max) {
 //funcion para generar los numeros asociados a la raza
 
 function racesComputer () {
-    const randomNumber = 2;
-    // getRandomNumber(5);
+    const randomNumber = getRandomNumber(5);
     let raceComp = "";
     if (randomNumber === 1 || randomNumber === 2 || randomNumber === 3 ){
     raceComp = 2;
@@ -35,12 +34,7 @@ return raceComp
 
 
 
-// Razas bondadosas:
-// Raza 1: Pelosos con fuerza (1),
-// Raza 2: Sureños buenos con fuerza (2),
-// Raza 3: Enanos con fuerza (3),
-// Raza 4: Númenóreanos con fuerza (4),
-// Raza 5: Elfos con fuerza (5).
+
 
 //nombrar razas del jugador con sus correspondientes fuerzas para luego compararlas
 function playerForces(){
@@ -73,6 +67,7 @@ function compareForces (){
     }
     if (player > computer){
         result.innerHTML = "Ha ganado el Ejército del Bien! Enhorabuena";
+
     }
     if (player < computer){
         result.innerHTML = "Ha ganado el Ejército del Mal! Vuelve a Intentarlo.";
@@ -81,6 +76,8 @@ function compareForces (){
 
 
 }
+// puntos de computer y player
+
 
 
 //funcion manejadora
