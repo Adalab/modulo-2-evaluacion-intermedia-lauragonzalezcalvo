@@ -21,4 +21,6 @@
     align-items: center;
    
 }
-/* falta darle un flex a jugadora y computer */
+.hidden {
+    display: none;
+}

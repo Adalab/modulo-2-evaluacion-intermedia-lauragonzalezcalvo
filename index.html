@@ -15,14 +15,16 @@
     <main class="main">
         <form>
             <select class="js-races races">
-                <option value="Elige">Seleccione la raza con la que vas a jugar</option>
-                <option value="Pelosos con fuerza" >Pelosos con fuerza</option>
-                <option value="Sureños buenos con fuerza">Sureños buenos con fuerza</option>
-                <option value="Tijera" class="js-scissors">Enanos con fuerza</option>
-                <option value="Númenóreanos con fuerza">Númenóreanos con fuerza</option>
-                <option value="Elfos con fuerza" >Elfos con fuerza</option>
+                <option value="0">Seleccione la raza con la que vas a jugar</option>
+                <option value="1" >Pelosos con fuerza</option>
+                <option value="2">Sureños buenos con fuerza</option>
+                <option value="3" class="js-scissors">Enanos con fuerza</option>
+                <option value="4">Númenóreanos con fuerza</option>
+                <option value="5" >Elfos con fuerza</option>
             </select>
             <button class="js-button button">Batalla</button>
+            <button class="js-buttonReset btnReset hidden">Reinicia el juego</button>
+
         </form>
         <section>
             <h2 class="js-result result">Comienza la batalla</h2>
@@ -30,8 +32,8 @@
         <section>
             <h2>Puntos</h2>
             <ul>
-                <li>Jugadora</li>
-                <li>Computer</li>
+                <li class="js-userCounterElement">Jugadora</li>
+                <li class="js-pcCounterElement">Computer</li>
             </ul>
         </section>
     </main>

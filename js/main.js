@@ -6,6 +6,16 @@
 const races = document.querySelector (".js-races");
 const btnPlay = document.querySelector (".js-button");
 const result = document.querySelector (".js-result");
+const userCounterElement = document.querySelector(".js-userCounterElement");
+const pcCounterElement = document.querySelector(".js-pcCounterElement");
+const btnReset = document.querySelector(".js-buttonReset");
+
+// CONTADORES
+
+let userPoints = 0;
+let pcPoints = 0;
+let movesCount = 0;
+
 
 // cuando hacemos click en batalla , se genera un número aleatorio
 
@@ -15,68 +25,84 @@ function getRandomNumber(max) {
 
 //funcion para generar los numeros asociados a la raza
 
-function racesComputer () {
+function getComputerForces() {
     const randomNumber = getRandomNumber(5);
-    let raceComp = "";
+    let forceComp = "";
     if (randomNumber === 1 || randomNumber === 2 || randomNumber === 3 ){
-    raceComp = 2;
+        forceComp = 2;
     }
     else if(randomNumber === 4){
-        raceComp = 3;
+        forceComp= 3;
     }
-    else if(randomNumber === 5){
-        raceComp = 5;
+    else{
+        forceComp = 5;
     }
-// console.log(raceComp);
-return raceComp
+
+return forceComp
 }
-
-
-
-
 
 
 //nombrar razas del jugador con sus correspondientes fuerzas para luego compararlas
-function playerForces(){
+function getUserRace(){
     const racesValue = races.value;
     let forces = "";
-    if (racesValue==="Pelosos con fuerza")
+    if (racesValue==="1")
     forces = 1;
-    else if (racesValue==="Sureños buenos con fuerza")
+    else if (racesValue==="2")
     forces = 2;
-    else if (racesValue==="Enanos con fuerza")
+    else if (racesValue==="3")
     forces = 3;
-    else if (racesValue==="Númenóreanos con fuerza")
+    else if (racesValue==="4")
     forces = 5;
-    else if (racesValue==="Elfos con fuerza")
+    else if (racesValue==="5")
     forces = 5;
     
-    // console.log (forces);
     return forces
 }
 
-//comparar razas para hacer ell resultado
+//comparar razas para hacer el resultado
 
-function compareForces (){
- //llamamos a la funciones para comparar los resultados de cada una
-    let player = playerForces();
-    let computer =  racesComputer () 
-    // console.log (computer);
-    if (player === 5 && computer === 5){
+function compareForces (computer, player){
+
+     if(player > computer){
+        result.innerHTML = "Ha ganado el Ejército del Bien! Enhorabuena";
+        userPoints++
+        userCounterElement.innerHTML = `Jugadora:  ${userPoints}`;
+    }
+    else if (player < computer){
+        result.innerHTML = "Ha ganado el Ejército del Mal! Vuelve a Intentarlo.";
+        pcPoints++
+        pcCounterElement.innerHTML = `Ordenador: ${pcPoints}`;
+    }
+    else {
         result.innerHTML = "Empate";
     }
-    if (player > computer){
-        result.innerHTML = "Ha ganado el Ejército del Bien! Enhorabuena";
-
-    }
-    if (player < computer){
-        result.innerHTML = "Ha ganado el Ejército del Mal! Vuelve a Intentarlo.";
-    }
-
-
 
 }
-// puntos de computer y player
+
+
+// funcion para sumar los movimientos y reiniciar el juego
+
+function renderMoves (){
+    movesCount++
+    if (movesCount === 10){
+        btnPlay.classList.add ("hidden");
+        btnReset.classList.remove("hidden");
+        // Resultado de la partida
+    if(userPoints>pcPoints){
+        result.innerHTML= "¡Has ganado la partida!";
+    }
+    else if (userPoints<pcPoints){
+        result.innerHTML= "El ordenado ganó esta partida, vuelve a intentarlo";
+    }
+    else{
+        result.innerHTML = "Empate";
+    }
+    }
+    
+}
+
+
 
 
 
@@ -84,9 +110,18 @@ function compareForces (){
 
 function handleClick(e) {
     e.preventDefault();
-    racesComputer ();
-    playerForces();
-    compareForces ();
+    // es mejor ejecutarlo aquí para que no sume movimientos si le das al botón y no seleccionas ninguna opción.
+    const racesValue = races.value;
+    if(  racesValue === "0"){
+        result.innerHTML = "Seleccione la raza con la que va a jugar";
+    } 
+    else  {
+        const computer = getComputerForces ();
+        const player = getUserRace();
+        compareForces (computer, player);
+        renderMoves ();
+    }
+    
 }
 
 btnPlay.addEventListener("click", handleClick);
